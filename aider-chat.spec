@@ -134,10 +134,6 @@ BuildRequires: winpdb
 Aider code assistant
 
 
-#%%dynamic_buildrequires
-#%%pyproject_buildrequires -N requirements.txt
-
-
 %prep
 %setup -q -n aider_chat-%{version}
 sed -i -e 's/<3.13/<3.14/' pyproject.toml
@@ -145,6 +141,12 @@ sed -i -e 's/\(.*\)==.*/\1/g' requirements.txt
 
 # voice.py backtracing via pydub with "No module named 'audioop'"
 sed -i -e 's/import models, prompts, voice/import models, prompts #, voice/' aider/commands.py
+
+
+# 19 deps missing
+#%%generate_buildrequires
+#%%pyproject_buildrequires
+
 
 %build
 
