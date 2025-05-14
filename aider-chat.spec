@@ -8,7 +8,7 @@
 Name: %{pypi_name}
 Version: 0.83.1
 License: Apache-2.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Aider is AI pair programming in your terminal
 URL:     https://github.com/Aider-AI/aider
 #Source0: %%{pypi_source %%{pypi_name} %%{version}}
@@ -129,6 +129,16 @@ BuildRequires: python3-xmltramp
 BuildRequires: python3-zipp
 BuildRequires: shyaml
 BuildRequires: winpdb
+# for i in $(rpm -ql aider-chat | grep /usr/lib64/python3.13/site-packages | sed -e 's!/usr/lib64/python3.13/site-packages/!!' | grep -v dist-info | hwk -l "takeWhile (/='/')" | uniq); do frpq 43 --qf '%%{name}' -f /usr/lib64/python3.13/site-packages/$i ; done | sort | uniq
+BuildRequires: python3-aiohttp
+BuildRequires: python3-protobuf
+BuildRequires: python3-jiter
+BuildRequires: python3-multidict
+BuildRequires: python3-propcache
+BuildRequires: python3-psutil
+BuildRequires: python3-regex
+BuildRequires: python3-tiktoken
+BuildRequires: python3-yarl
 
 %description
 Aider code assistant
@@ -174,5 +184,8 @@ done
 
 
 %changelog
+* Wed May 14 2025 Jens Petersen <petersen@redhat.com> - 0.83.1-2
+- unbundle packaged arch deps too
+
 * Tue May 13 2025 Jens Petersen <petersen@redhat.com> - 0.83.1-1
 - initial pip install package
