@@ -6,20 +6,21 @@
 %define debug_package %{nil}
 
 Name: %{pypi_name}
-Version: 0.83.1
+Version: 0.83.2
 License: Apache-2.0
-Release: 2%{?dist}
+Release: 1%{?dist}
 Summary: Aider is AI pair programming in your terminal
 URL:     https://github.com/Aider-AI/aider
 #Source0: %%{pypi_source %%{pypi_name} %%{version}}
 # https://pypi.org/project/aider-chat/#files
-Source0: https://files.pythonhosted.org/packages/fe/4b/20088dcb8b03598654ce473e5444771049e159874a8838cbc74bc34bc193/aider_chat-0.83.1.tar.gz
+Source0: https://files.pythonhosted.org/packages/1b/76/5621ce9d7e3a4fa2b7015a422023a238089a2628bc522762b2193cc6e8c0/aider_chat-0.83.2.tar.gz
 BuildRequires: chrpath
 #BuildRequires: cmake
 #BuildRequires: gcc
 #BuildRequires: gcc-c++
 #BuildRequires: gcc-fortran
 #BuildRequires: git-core
+#BuildRequires: libsndfile-devel
 BuildRequires: libtree-sitter-devel
 BuildRequires: openblas-devel
 BuildRequires: pyjson5
@@ -27,7 +28,6 @@ BuildRequires: pyproject-rpm-macros
 BuildRequires: python3-devel
 BuildRequires: python3-distro
 BuildRequires: python3-dotenv
-BuildRequires: python3-flake8
 BuildRequires: python3-httpx
 BuildRequires: python3-huggingface-hub
 BuildRequires: python3-jsonschema
@@ -35,8 +35,6 @@ BuildRequires: python3-markdown-it-py
 BuildRequires: python3-networkx
 BuildRequires: python3-numpy
 BuildRequires: python3-pip
-BuildRequires: python3-pycodestyle
-BuildRequires: python3-pyflakes
 BuildRequires: python3-pygments
 BuildRequires: python3-rsa
 BuildRequires: python3-scipy
@@ -184,6 +182,9 @@ done
 
 
 %changelog
+* Sat May 24 2025 Jens Petersen <petersen@redhat.com> - 0.83.2-1
+- update to 0.83.2
+
 * Wed May 14 2025 Jens Petersen <petersen@redhat.com> - 0.83.1-2
 - unbundle packaged arch deps too
 
